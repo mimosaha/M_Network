@@ -5,9 +5,9 @@ plugins {
 }
 
 rightmesh {
-    appKey = '0x448368d80c716a5de24526b9c6fc659912b0e77d'
-    username = 'MimoSaha'
-    password = '042eda63694c7dd87096e23fd7b72856'
+    appKey = project.getProperty('org.w3.telemesh')
+    username = rightmesh_build_username
+    password = rightmesh_build_password
 }
 
 android {
@@ -77,8 +77,8 @@ repositories {
     maven {
         url "http://artifactory.rightmesh.io/artifactory/maven"
         credentials {
-            username 'MimoSaha'
-            password '042eda63694c7dd87096e23fd7b72856'
+            username rightmesh_build_username
+            password rightmesh_build_password
         }
     }
     maven {

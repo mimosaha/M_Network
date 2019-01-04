@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements MeshStateListener
     public void meshStateChanged(MeshId meshId, int state) {
         if (state == MeshStateListener.SUCCESS) {
             try {
-                androidMeshManager.bind(14674);
+                androidMeshManager.bind(10623);
                 Log.v("MIMO_SAHA: ", "PeerId: " + meshId);
 
             } catch (RightMeshException e) {
