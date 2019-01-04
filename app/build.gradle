@@ -1,5 +1,14 @@
-apply plugin: 'com.android.application'
-apply plugin: 'com.github.kt3k.coveralls'
+plugins {
+    id 'com.android.application'
+    id 'io.left.rightmesh.rightmesh-plugin' version '1.8.4'
+    id 'com.github.kt3k.coveralls'
+}
+
+rightmesh {
+    appKey = '0x448368d80c716a5de24526b9c6fc659912b0e77d'
+    username = 'MimoSaha'
+    password = '042eda63694c7dd87096e23fd7b72856'
+}
 
 android {
     compileSdkVersion 28
@@ -11,6 +20,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -21,12 +31,20 @@ android {
             testCoverageEnabled true
         }
     }
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'io.left.rightmesh:lib-rightmesh-android:0.10.0'
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
@@ -39,4 +57,22 @@ coveralls {
 tasks.coveralls {
     dependsOn 'connectedAndroidTest'
     onlyIf { System.env.'CI' }
+}
+
+preBuild.dependsOn("rightmesh")
+
+repositories {
+    mavenCentral()
+    jcenter()
+    google()
+    maven {
+        url "http://artifactory.rightmesh.io/artifactory/maven"
+        credentials {
+            username 'MimoSaha'
+            password '042eda63694c7dd87096e23fd7b72856'
+        }
+    }
+    maven {
+        url "https://dl.bintray.com/ethereum/maven"
+    }
 }
