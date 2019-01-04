@@ -1,10 +1,12 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.github.kt3k.coveralls'
 
 android {
     compileSdkVersion 28
+    buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "com.m_network"
-        minSdkVersion 15
+        minSdkVersion 22
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -14,6 +16,9 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            testCoverageEnabled true
         }
     }
 }
@@ -25,4 +30,13 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
+
+coveralls {
+    jacocoReportPath = "${buildDir}/reports/coverage/debug/report.xml"
+}
+
+tasks.coveralls {
+    dependsOn 'connectedAndroidTest'
+    onlyIf { System.env.'CI' }
 }
