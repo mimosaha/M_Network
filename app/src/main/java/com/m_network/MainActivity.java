@@ -26,8 +26,13 @@ public class MainActivity extends AppCompatActivity implements MeshStateListener
     private AndroidMeshManager androidMeshManager;
 
     private void configureMesh() {
-        androidMeshManager = AndroidMeshManager
-                .getInstance(this, this, null, "M_Net_1");
+        try {
+            androidMeshManager = AndroidMeshManager
+                    .getInstance(this, this, null, "M_Net_1");
+            androidMeshManager.resume();
+        } catch (RightMeshException.RightMeshServiceDisconnectedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -40,6 +45,16 @@ public class MainActivity extends AppCompatActivity implements MeshStateListener
             } catch (RightMeshException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        try {
+            androidMeshManager.stop();
+        } catch (RightMeshException.RightMeshServiceDisconnectedException e) {
+            e.printStackTrace();
         }
     }
 }
