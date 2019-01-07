@@ -17,11 +17,8 @@ android:
     - addon-google_apis-google-25
     - sys-img-armeabi-v7a-android-22
 
-deploy:
-  rightmesh_build_username:
-    secure: "MimoSaha"
-  rightmesh_build_password:
-    secure: "042eda63694c7dd87096e23fd7b72856"
+$ export rightmesh_build_username =[MimoSaha]
+$ export rightmesh_build_password = [042eda63694c7dd87096e23fd7b72856]
 
 licenses:
     - 'android-sdk-license-.+'
