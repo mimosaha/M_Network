@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity implements MeshStateListener
         setContentView(R.layout.activity_main);
 
         configureMesh();
-        // Add a comment
     }
 
     private AndroidMeshManager androidMeshManager;
