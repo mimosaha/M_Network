@@ -5,7 +5,7 @@ plugins {
 }
 
 rightmesh {
-    appKey = "0xfa5578c476615d6e045ec8ac57549a4950a87b23"
+    appKey = hasProperty('org.w3.telemesh') ? org.w3.telemesh : System.getenv('org.w3.telemesh')
     username = hasProperty('rightmesh_build_username') ? rightmesh_build_username : System.getenv('rightmesh_build_username')
     password = hasProperty('rightmesh_build_password') ? rightmesh_build_password : System.getenv('rightmesh_build_password')
 }
