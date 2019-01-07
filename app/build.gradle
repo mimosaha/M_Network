@@ -5,7 +5,7 @@ plugins {
 }
 
 rightmesh {
-    appKey = project.getProperty('org.w3.telemesh')
+    appKey = "0xfa5578c476615d6e045ec8ac57549a4950a87b23"
     username = rightmesh_build_username
     password = rightmesh_build_password
 }

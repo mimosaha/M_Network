@@ -1,6 +1,13 @@
 language: android
 sudo: required
 jdk: oraclejdk8
+
+env:
+  global:
+    - rightmesh_build_username: "MimoSaha"
+    - rightmesh_build_password: "042eda63694c7dd87096e23fd7b72856"
+    - org.w3.telemesh: "0xfa5578c476615d6e045ec8ac57549a4950a87b23"
+
 android:
   components:
     - tools
