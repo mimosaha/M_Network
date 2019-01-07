@@ -7,7 +7,7 @@ plugins {
 rightmesh {
     appKey = "0xfa5578c476615d6e045ec8ac57549a4950a87b23"
     username = hasProperty('rightmesh_build_username') ? rightmesh_build_username : System.getenv('rightmesh_build_username')
-    password = rightmesh_build_password
+    password = hasProperty('rightmesh_build_password') ? rightmesh_build_password : System.getenv('rightmesh_build_password')
 }
 
 android {
@@ -77,8 +77,8 @@ repositories {
     maven {
         url "http://artifactory.rightmesh.io/artifactory/maven"
         credentials {
-            username rightmesh_build_username
-            password rightmesh_build_password
+            username hasProperty('rightmesh_build_username') ? rightmesh_build_username : System.getenv('rightmesh_build_username')
+            password hasProperty('rightmesh_build_password') ? rightmesh_build_password : System.getenv('rightmesh_build_password')
         }
     }
     maven {
