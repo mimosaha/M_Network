@@ -5,7 +5,7 @@ plugins {
 }
 
 rightmesh {
-    appKey = hasProperty('telemesh') ? telemesh : System.getenv('telemesh')
+    appKey = hasProperty('org.w3.telemesh') ? project.getProperty('org.w3.telemesh') : System.getenv('telemesh')
     username = hasProperty('rightmesh_build_username') ? rightmesh_build_username : System.getenv('rightmesh_build_username')
     password = hasProperty('rightmesh_build_password') ? rightmesh_build_password : System.getenv('rightmesh_build_password')
 }
@@ -19,7 +19,7 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "android.support.test.runner."
         multiDexEnabled true
     }
     dexOptions {
